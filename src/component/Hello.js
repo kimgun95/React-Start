@@ -17,20 +17,33 @@ import styles from "./Hello.module.css";
 
 // 방법 3
 export default function Hello() {
-    return (
-        <div>
-            {/* 스타일 적용법 1 */}
-            <h1
-            style={{
-                color: "#f00",
-                borderRight: "12px solid #000",
-                marginBottom: "50px",
-                opacity: 1,
-            }}
-            >
-                Hello
-            </h1>
-            <div className={styles.box}>Hello</div>
-        </div>
-    );
+  function showName() {
+    console.log("Gun");
+  }
+  function showAge(age) {
+    console.log(age);
+  }
+  function showText(txt) {
+      console.log(txt);
+  }
+  return (
+    <div>
+      <h1>Hello</h1>
+      <button onClick={showName}>Show Name</button>
+      <button
+        onClick={() => {
+          showAge(10);
+        }}
+      >
+        Show Age
+      </button>
+      <input
+      type="text"
+      onChange={e => {
+          const txt = e.target.value;
+          showText(txt);
+      }}
+      />
+    </div>
+  );
 }; 
