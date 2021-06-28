@@ -1,5 +1,6 @@
 import World from './World';
 import styles from "./Hello.module.css";
+import React, { useState } from 'react';
  
 // 방법 1
 // const Hello = function () {
@@ -17,33 +18,19 @@ import styles from "./Hello.module.css";
 
 // 방법 3
 export default function Hello() {
-  function showName() {
-    console.log("Gun");
-  }
-  function showAge(age) {
-    console.log(age);
-  }
-  function showText(txt) {
-      console.log(txt);
+  // let name = "Mike";
+  const [name, setName] = useState("Mike");
+
+  function changeName() {
+    setName(name === "Mike" ? "Jane" : "Mike");
+    // document.getElementById("name").innerText = name;
   }
   return (
     <div>
-      <h1>Hello</h1>
-      <button onClick={showName}>Show Name</button>
-      <button
-        onClick={() => {
-          showAge(10);
-        }}
-      >
-        Show Age
-      </button>
-      <input
-      type="text"
-      onChange={e => {
-          const txt = e.target.value;
-          showText(txt);
-      }}
-      />
+      <h1>State</h1>
+      <h2>컴포넌트의 속성 값</h2>
+      <h2 id="name">{name}</h2>
+      <button onClick={changeName}>Change Name!</button>
     </div>
   );
 }; 
